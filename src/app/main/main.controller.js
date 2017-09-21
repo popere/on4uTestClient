@@ -6,21 +6,70 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController($timeout, webDevTec, toastr, product, $log, $state) {
+
+
     var vm = this;
 
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1506010660881;
     vm.showToastr = showToastr;
+    vm.products = [];
+    vm.order = {
+      category : "sku",
+      direction : "+"
+    };
 
     activate();
 
     function activate() {
       getWebDevTec();
+
+      loadProducts();
+
       $timeout(function() {
         vm.classAnimation = 'rubberBand';
       }, 4000);
+    }
+
+    vm.orderBy = function(newCategoryOrder) {
+      if(vm.order.category === newCategoryOrder){
+        vm.order.direction = vm.order.direction === "+" ? "-" : "+";
+      } else {
+        vm.order.category = newCategoryOrder;
+        vm.order.direction = "+";
+      }
+    };
+
+    vm.isOrdered = function(direction, category) {
+      return direction === vm.order.direction && category === vm.order.category;
+    };
+
+    vm.createProduct = function() {
+      $state.go("create");
+    };
+
+    vm.modify = function(product) {
+      $state.go("edit");//STATE PARAMS product
+    };
+
+    vm.delete = function(productToDelete) {
+      product.deleteProduct(productToDelete.id).then(function(response){
+          $log.info("Delete of product has been done, product deleted:", product);
+          loadProducts();
+      }).catch(function(error){
+        $log.error(error);
+      });
+    };
+
+
+    function loadProducts() {
+      product.getListOfProducts().then(function(listProduct){
+          vm.products = listProduct;
+      }).catch(function(error){
+        $log.error(error);
+      });
     }
 
     function showToastr() {
