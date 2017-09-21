@@ -11,8 +11,6 @@
 
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
     vm.creationDate = 1506010660881;
     vm.showToastr = showToastr;
     vm.products = [];
@@ -51,7 +49,7 @@
     };
 
     vm.modify = function(product) {
-      $state.go("edit");//STATE PARAMS product
+      $state.go("edit", {"productId": product.id});
     };
 
     vm.delete = function(productToDelete) {

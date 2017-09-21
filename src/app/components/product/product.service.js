@@ -7,6 +7,7 @@
 
   /** @ngInject */
   function productService($log, $http) {
+    //TODO externalize in Constants file
     var apiTest = 'http://localhost:8000';
 
     var service = {
@@ -36,7 +37,7 @@
 
     function _getProduct(index) {
       if(angular.isNumber(index)){
-        return $http.get(apiTest + "/products/ + index")
+        return $http.get(apiTest + "/products/" + index)
                     .then(getProductComplete)
                     .catch(getProductFailed);
       } else {

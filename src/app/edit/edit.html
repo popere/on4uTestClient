@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div>
+    <acme-navbar creation-date="edit.creationDate"></acme-navbar>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 titles-table">
+      <h4>
+        Modificación del producto ► 
+        <span> <b>SKU:</b> {{edit.productBefore.sku}}</span>
+        <span> <b>Nombre:</b> {{edit.productBefore.name}}</span>
+        <span> <b>Price:</b> {{edit.productBefore.price}}</span>
+      </h4>
+      <p class="form-group">
+        <label>Nuevo SKU del producto</label>
+        <input type="text" ng-model="edit.productModified.sku" class="form-control">
+      </p>
+      <p class="form-group">
+        <label>Nuevo nombre del producto</label>
+        <input type="text" ng-model="edit.productModified.name" class="form-control"  />
+      </p>
+      <p class="form-group">
+        <label>Nuevo precio del producto</label>
+        <input type="number" ng-model="edit.productModified.price" class="form-control"  />
+      </p>
+    </div>
+    <button type="button" class="col-xs-3 btn btn-info" ng-click="edit.returnToHome()">◀ VOLVER</button>
+
+    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="edit.reset()">✖ BORRAR TODO</button>
+    <button type="button" class="col-xs-3 btn btn-primary" ng-click="edit.edit()">✔ GUARDAR MODIFICACIÓN</button>
+
+
+</div>

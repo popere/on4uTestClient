@@ -19,6 +19,12 @@
         templateUrl: 'app/create/create.html',
         controller: 'CreateController',
         controllerAs: 'create'
+      })
+      .state('edit', {
+        url: '/edit/:productId',
+        templateUrl: 'app/edit/edit.html',
+        controller: 'EditController',
+        controllerAs: 'edit'
       });
 
     $urlRouterProvider.otherwise('/');
