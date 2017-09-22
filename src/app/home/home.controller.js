@@ -3,10 +3,10 @@
 
   angular
     .module('on4uTestClient')
-    .controller('MainController', MainController);
+    .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function MainController($timeout, toastr, product, $log, $state) {
+  function HomeController($timeout, toastr, product, $log, $state) {
 
 
     var vm = this;
@@ -22,7 +22,12 @@
     activate();
 
     function activate() {
+
       loadProducts();
+
+      $timeout(function() {
+        vm.classAnimation = 'rubberBand';
+      }, 4000);
     }
 
     vm.orderBy = function(newCategoryOrder) {
@@ -32,7 +37,6 @@
         vm.order.category = newCategoryOrder;
         vm.order.direction = "+";
       }
-      toastr.info('TOTO');
     };
 
     vm.isOrdered = function(direction, category) {
@@ -66,9 +70,8 @@
     }
 
     function showToastr() {
-      toastr.info('TOTO');
+      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
       vm.classAnimation = '';
     }
-
   }
 })();

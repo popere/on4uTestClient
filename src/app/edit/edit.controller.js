@@ -6,7 +6,7 @@
     .controller('EditController', EditController);
 
   /** @ngInject */
-  function EditController($state, product, $log, $stateParams) {
+  function EditController($state, product, $log, $stateParams, tools) {
 
 
     var vm = this;
@@ -32,10 +32,10 @@
     vm.edit = function() {
       //validation of everything is completed in product
 
-
-      product.editProduct(vm.productModified).then(function(response){
+      var index = parseInt(vm.productModified.id);
+      product.updateProduct(index, vm.productModified).then(function(response){
           $log.info("Edit of product correct", response);
-          vm.returnToHome();
+          tools.goToHome();
       }).catch(function(error){
         $log.error(error);
       });
@@ -46,11 +46,7 @@
     };
 
     vm.returnToHome = function() {
-      $state.go("home");
+      tools.goToHome();
     };
-
-
-
-
   }
 })();

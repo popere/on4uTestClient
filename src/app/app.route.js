@@ -10,6 +10,12 @@
     $stateProvider
       .state('home', {
         url: '/',
+        templateUrl: 'app/home/home.html',
+        controller: 'HomeController',
+        controllerAs: 'home'
+      })
+      .state('products', {
+        url: '/products',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
@@ -25,6 +31,16 @@
         templateUrl: 'app/edit/edit.html',
         controller: 'EditController',
         controllerAs: 'edit'
+      })
+      .state('config', {
+        url: '/config',
+        templateUrl: 'app/config/config.html',
+        controller: 'ConfigController',
+        controllerAs: 'config'
+      })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'app/about/about.html'
       });
 
     $urlRouterProvider.otherwise('/');

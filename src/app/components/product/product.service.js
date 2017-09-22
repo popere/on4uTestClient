@@ -8,18 +8,38 @@
   /** @ngInject */
   function productService($log, $http) {
     //TODO externalize in Constants file
-    var apiTest = 'http://localhost:8000';
+    var apiTest = "http://localhost:8000";
 
     var service = {
       getListOfProducts: _getListOfProducts,
       getProduct: _getProduct,
       createProduct: _createProduct,
       deleteProduct: _deleteProduct,
-      updateProduct: _updateProduct
+      updateProduct: _updateProduct,
+      modifyUrlApi: _modifyUrlApi,
+      getCurrentUrlApi: _getCurrentUrlApi,
+      resetUrlApi: _resetUrlApi
+
     };
 
     return service;
 
+    function _modifyUrlApi(newUrlApi) {
+      if(newUrlApi){
+        apiTest = newUrlApi;
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function _resetUrlApi() {
+        apiTest = "http://localhost:8000";
+    }
+
+    function _getCurrentUrlApi() {
+      return apiTest;
+    }
 
     function _getListOfProducts() {
       return $http.get(apiTest + "/products")
@@ -95,9 +115,12 @@
       }
     }
 
-    function _updateProduct(index) {
-      if(angular.isNumber(index)){
-        return $http.delete(apiTest + "/products/" + index)
+    function _updateProduct(index, product) {
+      if(angular.isNumber(index) && product && product.price && product.sku && product.name){
+        return $http.delete(apiTest + "/products/" + index,
+                          product,
+                          {headers: {'Content-Type': "application/json"}}
+                    )
                     .then(updateProductComplete)
                     .catch(updateProductFailed);
       } else {

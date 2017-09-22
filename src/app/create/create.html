@@ -1,23 +1,23 @@
 <div class="container">
 
   <div>
-    <acme-navbar creation-date="create.creationDate"></acme-navbar>
+    <navbar></navbar>
   </div>
 
   <div class="row">
     <div class="col-xs-12 titles-table">
-      <h4>Creación de un nuevo producto</h4>
+      <h4>Añadir un nuevo producto</h4>
       <p class="form-group">
         <label>SKU del producto</label>
         <input type="text" ng-model="create.product.sku" class="form-control">
       </p>
       <p class="form-group">
         <label>Nombre del producto</label>
-        <input type="text" ng-model="create.product.name" class="form-control"  />
+        <input type="text" ng-model="create.product.name" class="form-control"/>
       </p>
       <p class="form-group">
         <label>Precio del producto</label>
-        <input type="number" ng-model="create.product.price" class="form-control"  />
+        <input type="number" ng-model="create.product.price" class="form-control"/>
       </p>
     </div>
     <button type="button" class="col-xs-3 btn btn-info" ng-click="create.returnToHome()">◀ VOLVER</button>

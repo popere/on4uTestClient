@@ -1,12 +1,12 @@
 <div class="container">
 
   <div>
-    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    <navbar></navbar>
   </div>
 
-  <button type="button" class="btn btn-success" ng-click="main.createProduct()">✚ CREAR NUEVO PRODUCTO</button>
+  <button type="button" class="btn btn-success" ng-click="main.createProduct()">✚ AÑADIR NUEVO PRODUCTO</button>
 
-  <div class="row" ng-show="main.products.lenght !== 0">
+  <div class="row" ng-if="main.products.length !== 0">
     <div class="col-xs-12 titles-table">
       <div class="col-xs-3 text-center" ng-click="main.orderBy('sku')">
         SKU
@@ -41,20 +41,5 @@
     </div>
   </div>
 
-
-
-  <div class="jumbotron text-center">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      Always a pleasure scaffolding your apps.
-    </p>
-    <p class="animated infinite" ng-class="main.classAnimation">
-      <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
-    </p>
-    <p>
-      With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-    </p>
-  </div>
 
 </div>

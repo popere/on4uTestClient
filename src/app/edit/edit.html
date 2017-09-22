@@ -1,17 +1,20 @@
 <div class="container">
 
   <div>
-    <acme-navbar creation-date="edit.creationDate"></acme-navbar>
+    <navbar></navbar>
   </div>
 
   <div class="row">
     <div class="col-xs-12 titles-table">
       <h4>
-        Modificación del producto ► 
-        <span> <b>SKU:</b> {{edit.productBefore.sku}}</span>
-        <span> <b>Nombre:</b> {{edit.productBefore.name}}</span>
-        <span> <b>Price:</b> {{edit.productBefore.price}}</span>
+        Modificación del producto ►
       </h4>
+      <h4 style="display: inline">
+        <b>SKU:</b> {{edit.productBefore.sku}}
+        <br/> <b>Nombre:</b> {{edit.productBefore.name}}
+        <br/>  <b>Price:</b> {{edit.productBefore.price}}
+      </h4>
+
       <p class="form-group">
         <label>Nuevo SKU del producto</label>
         <input type="text" ng-model="edit.productModified.sku" class="form-control">

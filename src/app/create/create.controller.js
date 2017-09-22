@@ -6,7 +6,7 @@
     .controller('CreateController', CreateController);
 
   /** @ngInject */
-  function CreateController($state, product, $log) {
+  function CreateController($state, product, $log, tools) {
 
 
     var vm = this;
@@ -26,7 +26,7 @@
 
       product.createProduct(vm.product).then(function(response){
           $log.info("Creation of product correct", response);
-          vm.returnToHome();
+          tools.goToHome();
       }).catch(function(error){
         $log.error(error);
       });
@@ -40,8 +40,9 @@
       };
     };
 
+
     vm.returnToHome = function() {
-      $state.go("home");
+      tools.goToHome();
     };
 
 

@@ -3,10 +3,10 @@
 
   angular
     .module('on4uTestClient')
-    .directive('acmeNavbar', acmeNavbar);
+    .directive('navbar', navbar);
 
   /** @ngInject */
-  function acmeNavbar() {
+  function navbar() {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
@@ -21,11 +21,28 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController(moment, $state, $rootScope, $log) {
       var vm = this;
 
       // "vm.creationDate" is available by directive option "bindToController: true"
       vm.relativeDate = moment(vm.creationDate).fromNow();
+      vm.currentState = $state.current.name;
+
+
+
+      vm.isState = function(tab){
+        var gestionActive = tab === "gestion" && (vm.currentState === "products" || vm.currentState === "create" || vm.currentState === "edit" );
+        var aboutActive = tab === "about" && (vm.currentState === "about");
+        var tiendaActive = tab === "tienda" && (vm.currentState === "home");
+        var configActive = tab === "config" && (vm.currentState === "config");
+        if( gestionActive || aboutActive || tiendaActive || configActive){
+            return "active";
+        } else {
+          return "";
+        }
+
+      }
+
     }
   }
 
