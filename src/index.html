@@ -2,9 +2,15 @@
 <html ng-app="on4uTestClient">
   <head>
     <meta charset="utf-8">
-    <title>on4uTestClient</title>
+    <title>Tienda de Pablo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
@@ -19,12 +25,21 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body>
+  <body style="background-color: #ddd">
     <!--[if lt IE 10]>
       <p class="browsehappy">Esta usted usando un navegador <strong>desfasado</strong>. Por favor <a href="http://browsehappy.com/">actualiza su navegador</a> para mejorar su experiencia.</p>
     <![endif]-->
 
-    <div ui-view></div>
+    <div class="container">
+
+      <div>
+        <navbar></navbar>
+      </div>
+
+      <div ui-view></div>
+
+    </div>
+
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->

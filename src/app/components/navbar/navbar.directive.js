@@ -21,11 +21,28 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment, $state, $rootScope, $log) {
+    function NavbarController($state, tools) {
+
+      var _tabsToTitle = {
+        tienda: "Tienda de Pablo",
+        gestion: "Gestión de productos",
+        about: "Sobre Pablo",
+        config: "Configuración"
+      };
+
+      var _stateToTab = {
+        products: "gestion",
+        create: "gestion",
+        edit: "gestion",
+        about: "about",
+        config: "config",
+        home: "tienda"
+      };
+
       var vm = this;
 
       vm.currentState = $state.current.name;
-      vm.collapse = true;
+      vm.collapsed = false;
 
 
 
@@ -34,13 +51,18 @@
         var aboutActive = tab === "about" && (vm.currentState === "about");
         var tiendaActive = tab === "tienda" && (vm.currentState === "home");
         var configActive = tab === "config" && (vm.currentState === "config");
-        if( gestionActive || aboutActive || tiendaActive || configActive){
-            return "active";
-        } else {
-          return "";
-        }
 
-      }
+        return gestionActive || aboutActive || tiendaActive || configActive;
+
+      };
+
+      vm.titleXs = function(){
+        return _tabsToTitle[_stateToTab[$state.current.name]];
+      };
+
+      vm.goHome = function(){
+        tools.goToHome();
+      };
 
     }
   }

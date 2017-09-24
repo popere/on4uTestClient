@@ -1,8 +1,11 @@
 <nav class="navbar navbar-static-top navbar-inverse hidden-xs">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" style="display:flex">
+      <img height="47px" width="auto" class="logo click-mouse" src="assets/images/logo.svg" ng-click="vm.goHome()" />
       <a ui-sref="home" class="navbar-brand">
         Tienda de Pablo
+        <span style="">
+        </span>
       </a>
     </div>
 
@@ -23,26 +26,20 @@
 <nav class="navbar navbar-static-top navbar-inverse hidden-sm hidden-md hidden-lg">
   <div class="container-fluid">
     <div class="navbar-header click-mouse" ng-click="vm.collapsed = !vm.collapsed">
-      <a class="navbar-brand" ng-if="vm.isState('tienda') === 'active'">
-          Tienda de Pablo
+      <img height="47px" width="auto" class="logo-xs click-mouse" src="assets/images/logo.svg" ng-click="vm.goHome()" />
+      <a class="navbar-brand" ng-bind="vm.titleXs()">
       </a>
-      <a class="navbar-brand" ng-if="vm.isState('gestion') === 'active'">
-          Gestión de productos
-      </a>
-      <a class="navbar-brand" ng-if="vm.isState('about') === 'active'">
-          Sobre Pablo
-      </a>
-      <a class="navbar-brand" ng-if="vm.isState('config') === 'active'">
-          Configuración
-      </a>
+      <div class="chevron">
+        <span ng-show="vm.collapsed">▲</span> <span ng-show="!vm.collapsed">▼</span>
+      </div>
     </div>
     <ul class="nav navbar-nav" ng-show="vm.collapsed">
-      <li ng-class="vm.isState('tienda')"><a ui-sref="home">Tienda de Pablo</a></li>
-      <li ng-class="vm.isState('gestion')"><a ui-sref="products">Gestión de productos</a></li>
-      <li ng-class="vm.isState('about')"><a ui-sref="about">Sobre Pablo</a></li>
-      <li ng-class="vm.isState('config')"><a ui-sref="config">Configuración</a></li>
+      <li ng-class="vm.isState('tienda') ? 'active': ''"><a ng-click="vm.collapsed = !vm.collapsed" ui-sref="home">Tienda de Pablo</a></li>
+      <li ng-class="vm.isState('gestion') ? 'active': ''"><a ng-click="vm.collapsed = !vm.collapsed" ui-sref="products">Gestión de productos</a></li>
+      <li ng-class="vm.isState('about') ? 'active': ''"><a ng-click="vm.collapsed = !vm.collapsed" ui-sref="about">Sobre Pablo</a></li>
+      <li ng-class="vm.isState('config') ? 'active': ''"><a ng-click="vm.collapsed = !vm.collapsed" ui-sref="config">Configuración</a></li>
+      
     </ul>
-
 
   </div>
 </nav>

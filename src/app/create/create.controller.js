@@ -26,7 +26,7 @@
 
       product.createProduct(vm.product).then(function(response){
           $log.info("Creation of product correct", response);
-          tools.goToHome();
+          tools.goToProducts();
       }).catch(function(error){
         $log.error(error);
       });
@@ -42,7 +42,7 @@
 
 
     vm.returnToHome = function() {
-      tools.goToHome();
+      tools.goToProducts();
     };
 
 

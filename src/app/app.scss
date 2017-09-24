@@ -27,6 +27,19 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
   cursor: pointer;
 }
 
+.background-products-title {
+  background-color: #ef9f43;
+}
+
+.background-products-pair {
+  background-color: #5AADBB;
+  color: #000;
+}
+.background-products-odd {
+  background-color: #8fdfec;
+  color: #000;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

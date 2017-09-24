@@ -15,3 +15,27 @@ h1 {
 a:hover, a:focus {
   color: greenyellow;
 }
+
+.logo {
+  margin-top: 2px;
+  margin-left: -12px;
+  margin-right: 10px;
+  background-color: #5AADBB;
+}
+.logo-xs {
+  margin-top: 2px;
+  margin-left: 2px;
+  background-color: #5AADBB;
+  float: left;
+}
+
+.navbar-header {
+  display: flex;
+}
+
+.chevron {
+  float: right;
+  color: #fff;
+  padding-top: 12px;
+  font-size: 20px;
+}

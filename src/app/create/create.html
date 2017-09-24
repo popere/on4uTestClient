@@ -1,30 +1,24 @@
-<div class="container">
-
-  <div>
-    <navbar></navbar>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6">
+    <h4>Añadir un nuevo producto</h4>
+    <p class="form-group">
+      <label>SKU del producto</label>
+      <input type="text" ng-model="create.product.sku" placeholder="SKU del producto, ejemplo: E18467U" class="form-control">
+    </p>
+    <p class="form-group">
+      <label>Nombre del producto</label>
+      <input type="text" ng-model="create.product.name" placeholder="Nombre del producto, ejemplo: Cámara de fotos" class="form-control"/>
+    </p>
+    <p class="form-group">
+      <label>Precio del producto (€)</label>
+      <input type="number" ng-model="create.product.price" placeholder="Precio del producto, ejemplo: 124" class="form-control"/>
+    </p>
   </div>
+  <div class="col-xs-12">
+    <button type="button" class="col-xs-3 btn btn-info" ng-click="create.returnToHome()">◀ VOLVER</button>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6">
-      <h4>Añadir un nuevo producto</h4>
-      <p class="form-group">
-        <label>SKU del producto</label>
-        <input type="text" ng-model="create.product.sku" placeholder="SKU del producto, ejemplo: E18467U" class="form-control">
-      </p>
-      <p class="form-group">
-        <label>Nombre del producto</label>
-        <input type="text" ng-model="create.product.name" placeholder="Nombre del producto, ejemplo: Cámara de fotos" class="form-control"/>
-      </p>
-      <p class="form-group">
-        <label>Precio del producto (€)</label>
-        <input type="number" ng-model="create.product.price" placeholder="Precio del producto, ejemplo: 124" class="form-control"/>
-      </p>
-    </div>
-    <div class="col-xs-12">
-      <button type="button" class="col-xs-3 btn btn-info" ng-click="create.returnToHome()">◀ VOLVER</button>
-
-      <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="create.removeAll()">✖ BORRAR TODO</button>
-      <button type="button" class="col-xs-3 btn btn-primary" ng-click="create.create()">✚ CREAR</button>
-    </div>
+    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="create.removeAll()">✖ BORRAR TODO</button>
+    <button type="button" class="col-xs-3 btn btn-primary" ng-click="create.create()">✚ CREAR</button>
+  </div>
 
 </div>

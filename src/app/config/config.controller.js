@@ -29,7 +29,7 @@
     };
 
     vm.returnToHome = function() {
-      tools.goToHome();
+      tools.goToProducts();
     };
 
 

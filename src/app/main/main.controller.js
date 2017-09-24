@@ -67,7 +67,6 @@
 
     function showToastr() {
       toastr.info('TOTO');
-      vm.classAnimation = '';
     }
 
   }

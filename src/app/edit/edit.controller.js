@@ -35,7 +35,7 @@
       var index = parseInt(vm.productModified.id);
       product.updateProduct(index, vm.productModified).then(function(response){
           $log.info("Edit of product correct", response);
-          tools.goToHome();
+          tools.goToProducts();
       }).catch(function(error){
         $log.error(error);
       });
@@ -46,7 +46,7 @@
     };
 
     vm.returnToHome = function() {
-      tools.goToHome();
+      tools.goToProducts();
     };
   }
 })();

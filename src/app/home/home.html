@@ -1,36 +1,31 @@
-<div class="container">
+<h3>
+  Bienvenido al catálogo de la tienda de Pablo
+</h3>
 
-  <div>
-    <navbar></navbar>
-  </div>
-
-  <h3>
-    Bienvenido al catálogo de la tienda de Pablo
-  </h3>
-
-  <h5 ng-if="home.products.length === 0">Actualmente no tenemos ningun producto en venta, clique en <a ui-sref="products">Gestion de productos</a> para añadir nuevos productos en venta</h5>
-  <h5 ng-if="home.products.length !== 0">Lista de productos en venta:</h5>
+<h5 ng-if="home.products.length === 0">Actualmente no tenemos ningun producto en venta, clique en <a ui-sref="products">Gestión de productos</a> para añadir nuevos productos en venta</h5>
+<h5 ng-if="home.products.length !== 0">Lista de productos en venta:</h5>
 
 
-  <div class="row" ng-if="home.products.length !== 0">
-    <div class="col-xs-12 titles-table">
+<div class="row" ng-if="home.products.length !== 0">
+  <div class="col-xs-12 ">
+    <div class="col-xs-12 titles-table background-products-title">
       <div class="col-xs-4 text-center" ng-click="home.orderBy('sku')">
-        SKU
+        <b>SKU</b>
         <span ng-show="home.isOrdered('+','sku')">▲</span>
         <span ng-show="home.isOrdered('-','sku')">▼</span>
       </div>
       <div class="col-xs-4 text-center" ng-click="home.orderBy('name')">
-        NOMBRE
+        <b>NOMBRE</b>
         <span ng-show="home.isOrdered('+','name')">▲</span>
         <span ng-show="home.isOrdered('-','name')">▼</span>
       </div>
       <div class="col-xs-4 text-center" ng-click="home.orderBy('price')">
-        PRECIO
+        <b>PRECIO (€)</b>
         <span ng-show="home.isOrdered('+','price')">▲</span>
         <span ng-show="home.isOrdered('-','price')">▼</span>
       </div>
     </div>
-    <div class="col-xs-12 text-center"  ng-repeat="product in home.products | orderBy: home.order.direction + home.order.category">
+    <div class="col-xs-12 text-center" ng-class="index % 2 ? 'background-products-pair': 'background-products-odd'"  ng-repeat="(index,product) in home.products | orderBy: home.order.direction + home.order.category">
       <div class="col-xs-4" >
         {{product.sku}}
       </div>
@@ -42,6 +37,4 @@
       </div>
     </div>
   </div>
-
-
 </div>

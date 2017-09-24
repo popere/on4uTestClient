@@ -9,12 +9,18 @@
   function toolsService($state) {
 
     var service = {
-      goToHome : _goToHome
+      goToHome : _goToHome,
+      goToProducts : _goToProducts
+
     };
 
     return service;
 
     function _goToHome() {
+      $state.go("home");
+    }
+
+    function _goToProducts() {
       $state.go("products");
     }
 
