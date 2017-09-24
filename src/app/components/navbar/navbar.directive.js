@@ -41,12 +41,18 @@
 
       var vm = this;
 
-      vm.currentState = $state.current.name;
+      vm.currentState;
       vm.collapsed = false;
 
 
-
+      /**
+       * Function to know if we are in state corresponding to tab
+       * @param tab
+       * @returns {boolean}
+       */
       vm.isState = function(tab){
+        vm.currentState = $state.current.name;
+
         var gestionActive = tab === "gestion" && (vm.currentState === "products" || vm.currentState === "create" || vm.currentState === "edit" );
         var aboutActive = tab === "about" && (vm.currentState === "about");
         var tiendaActive = tab === "tienda" && (vm.currentState === "home");
@@ -56,10 +62,17 @@
 
       };
 
+      /**
+       * Function to have the text to show in each moment, depending on the current state.
+       * @returns {*}
+       */
       vm.titleXs = function(){
         return _tabsToTitle[_stateToTab[$state.current.name]];
       };
 
+      /**
+       * Function to go the home state.
+       */
       vm.goHome = function(){
         tools.goToHome();
       };

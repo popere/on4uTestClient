@@ -5,6 +5,12 @@
 $navbar-inverse-link-color: #5AADBB;
 $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
 
+$btn-default-color:              #fff !default;
+$btn-default-bg: #ababab !default;
+$btn-default-border:             #347bb7 !default;
+
+$brand-info: #f69422 !default;
+
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies
@@ -31,6 +37,10 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
   background-color: #ef9f43;
 }
 
+.gestion-margin{
+  margin-bottom: 5px;
+}
+
 .background-products-pair {
   background-color: #5AADBB;
   color: #000;
@@ -38,6 +48,37 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
 .background-products-odd {
   background-color: #8fdfec;
   color: #000;
+}
+.btn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.action-buttons {
+  display:flex;
+  margin-left: 0;
+  margin-right: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.property-product {
+  margin-top: 7px;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.properties-product {
+  margin: 0;
+  height: 34px;
+}
+
+.flex {
+  display:flex;
 }
 
 /**

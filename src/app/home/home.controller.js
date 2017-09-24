@@ -6,27 +6,23 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController($timeout, toastr, product, $log, $state) {
+  function HomeController(toastr, productService, $log) {
 
 
     var vm = this;
 
-    vm.creationDate = 1506010660881;
-    vm.showToastr = showToastr;
     vm.products = [];
     vm.order = {
       category : "sku",
       direction : "+"
     };
 
-    activate();
+    loadProducts();
 
-    function activate() {
-
-      loadProducts();
-
-    }
-
+    /**
+     * Function to change the order of the product list
+     * @param newCategoryOrder
+     */
     vm.orderBy = function(newCategoryOrder) {
       if(vm.order.category === newCategoryOrder){
         vm.order.direction = vm.order.direction === "+" ? "-" : "+";
@@ -36,38 +32,28 @@
       }
     };
 
+    /**
+     * Function to know if the list of products is ordered by the given direction and category values
+     * @param direction
+     * @param category
+     * @returns {boolean}
+     */
     vm.isOrdered = function(direction, category) {
       return direction === vm.order.direction && category === vm.order.category;
     };
 
-    vm.createProduct = function() {
-      $state.go("create");
-    };
-
-    vm.modify = function(product) {
-      $state.go("edit", {"productId": product.id});
-    };
-
-    vm.delete = function(productToDelete) {
-      product.deleteProduct(productToDelete.id).then(function(response){
-          $log.info("Delete of product has been done, product deleted:", product);
-          loadProducts();
-      }).catch(function(error){
-        $log.error(error);
-      });
-    };
-
-
+    /**
+     * Function to load all products in the database
+     */
     function loadProducts() {
-      product.getListOfProducts().then(function(listProduct){
+      productService.getListOfProducts().then(function(listProduct){
           vm.products = listProduct;
+        toastr.success('Recuperación éxitosa de los productos.');
       }).catch(function(error){
         $log.error(error);
+        toastr.error('Error en la recuperación de la lista de productos del servidor.');
       });
     }
 
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    }
   }
 })();

@@ -1,18 +1,21 @@
-<h3>Configuración</h3>
+<div class="col-xs-12 flex">
+  <h3 class="text-center">
+    Configuración de la tienda <img height="47px" width="auto" alt="logo" src="assets/images/logo.svg" /> de Pablo
+  </h3>
+</div>
 <div class="row">
-  <div class="col-xs-12 titles-table">
-    <h4>Añadir un nuevo producto</h4>
-    <p class="form-group">
-      <label>Nueva URL de la API del backend:</label>
-      <input type="text" ng-model="config.newUrlApi" class="form-control">
-    </p>
-  </div>
+    <div class="col-xs-12">
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-6">
+      <p class="form-group">
+        <label>Nueva URL de la API del backend:</label>
+        <input type="text" ng-model="config.newUrlApi" class="form-control">
+      </p>
+    </div>
   <div class="col-xs-12">
     <button type="button" class="col-xs-3 btn btn-info" ng-click="config.returnToHome()">◀ VOLVER</button>
 
-    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="config.reset()">✖ RESET</button>
+    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-default" ng-click="config.reset()">✖ RESET</button>
     <button type="button" class="col-xs-3 btn btn-primary" ng-click="config.save()">✚ GUARDAR</button>
   </div>
-
-
 </div>

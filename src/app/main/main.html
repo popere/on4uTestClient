@@ -1,36 +1,58 @@
 <button type="button" class="btn btn-success" ng-click="main.createProduct()">✚ AÑADIR NUEVO PRODUCTO</button>
 
+<h4 ng-if="main.products.length === 0">Por favor añada su primer producto mediante el botón AÑADIR NUEVO PRODUCTO:</h4>
+
 <div class="row" ng-if="main.products.length !== 0">
-  <div class="col-xs-12 titles-table">
-    <div class="col-xs-3 text-center" ng-click="main.orderBy('sku')">
-      SKU
-      <span ng-show="main.isOrdered('+','sku')">▲</span>
-      <span ng-show="main.isOrdered('-','sku')">▼</span>
-    </div>
-    <div class="col-xs-3 text-center" ng-click="main.orderBy('name')">
-      NOMBRE
-      <span ng-show="main.isOrdered('+','name')">▲</span>
-      <span ng-show="main.isOrdered('-','name')">▼</span>
-    </div>
-    <div class="col-xs-3 text-center" ng-click="main.orderBy('price')">
-      PRECIO (€)
-      <span ng-show="main.isOrdered('+','price')">▲</span>
-      <span ng-show="main.isOrdered('-','price')">▼</span>
+  <div class="col-xs-12">
+    <h3>Gestión de los productos en venta:</h3>
+  </div>
+
+  <div class="col-xs-12 ">
+    <div class="col-xs-12 background-products-title gestion-margin">
+      <div class="col-xs-3 text-center" ng-click="main.orderBy('sku')">
+        <b>SKU</b>
+        <span ng-show="main.isOrdered('+','sku')">▲</span>
+        <span ng-show="main.isOrdered('-','sku')">▼</span>
+      </div>
+      <div class="col-xs-3 text-center click-mouse" ng-click="main.orderBy('name')">
+        <b>NOMBRE</b>
+        <span ng-show="main.isOrdered('+','name')">▲</span>
+        <span ng-show="main.isOrdered('-','name')">▼</span>
+      </div>
+      <div class="col-xs-3 text-center click-mouse" ng-click="main.orderBy('price')">
+        <b>PRECIO (€)</b>
+        <span ng-show="main.isOrdered('+','price')">▲</span>
+        <span ng-show="main.isOrdered('-','price')">▼</span>
+      </div>
+      <div class="col-xs-3 text-center">
+        <b>ACCIONES</b>
+      </div>
     </div>
   </div>
-  <div class="col-xs-12 text-center"  ng-repeat="product in main.products | orderBy: main.order.direction + main.order.category">
-    <div class="col-xs-3" >
-      {{product.sku}}
-    </div>
-    <div class="col-xs-3" >
-      {{product.name}}
-    </div>
-    <div class="col-xs-3" >
-      {{product.price}}
-    </div>
-    <div class="col-xs-3" style="display:flex">
-      <button type="button" class="btn btn-primary" ng-click="main.modify(product)">✎ <span class="hidden-xs hidden-sm">MODIFICAR</span><span class="hidden-xs hidden-md hidden-xl">MODIF</span></button>
-      <button type="button" class="btn btn-danger" ng-click="main.delete(product)">✖ <span class="hidden-xs hidden-sm">ELIMINAR</span><span class="hidden-xs hidden-md hidden-xl">ELIM</span></button>
+  <div class="col-xs-12">
+    <div ng-repeat="(index,product) in main.products | orderBy: main.order.direction + main.order.category">
+      <div class="col-xs-9 text-center properties-product" ng-class="index % 2 ? 'background-products-pair': 'background-products-odd'">
+
+        <div class="col-xs-4 property-product" uib-tooltip="{{product.sku}}" >
+          {{product.sku}}
+        </div>
+        <div class="col-xs-4 property-product" uib-tooltip="{{product.name}}">
+          {{product.name}}
+        </div>
+        <div class="col-xs-4 property-product" uib-tooltip="{{product.price}}">
+          {{product.price}}
+        </div>
+      </div>
+      <div class="col-xs-3 text-center action-buttons">
+        <button type="button" class="btn btn-primary" uib-tooltip="MODIFICAR" ng-click="main.modify(product)">
+          ✎
+          <span class="hidden-xs ">MODIFICAR</span>
+        </button>
+        <button type="button" class="btn btn-danger" uib-tooltip="ELIMINAR" ng-click="main.delete(product)">
+          ✖
+          <span class="hidden-xs">ELIMINAR</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

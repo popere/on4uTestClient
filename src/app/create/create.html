@@ -15,10 +15,10 @@
     </p>
   </div>
   <div class="col-xs-12">
-    <button type="button" class="col-xs-3 btn btn-info" ng-click="create.returnToHome()">◀ VOLVER</button>
+    <button type="button" class="col-xs-3 btn btn-info" uib-tooltip="VOLVER" ng-click="create.returnToHome()">◀ VOLVER</button>
 
-    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="create.removeAll()">✖ BORRAR TODO</button>
-    <button type="button" class="col-xs-3 btn btn-primary" ng-click="create.create()">✚ CREAR</button>
+    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-default"  uib-tooltip="BORRAR TODO" ng-click="create.removeAll()">✖ BORRAR TODO</button>
+    <button type="button" class="col-xs-3 btn btn-primary"  uib-tooltip="CREAR" ng-click="create.create()">✚ CREAR</button>
   </div>
 
 </div>
