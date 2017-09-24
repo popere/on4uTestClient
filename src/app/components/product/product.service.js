@@ -47,7 +47,8 @@
                   .catch(getListProductsFailed);
 
       function getListProductsComplete(response) {
-        return response.data;
+        //TODO GESTION IF 400 or timeout
+        return response.data === undefined ? [] : response.data;
       }
 
       function getListProductsFailed(error) {

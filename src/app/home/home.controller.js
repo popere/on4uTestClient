@@ -24,10 +24,7 @@
     function activate() {
 
       loadProducts();
-
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
+      
     }
 
     vm.orderBy = function(newCategoryOrder) {

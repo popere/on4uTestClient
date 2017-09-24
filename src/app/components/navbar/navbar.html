@@ -1,4 +1,4 @@
-<nav class="navbar navbar-static-top navbar-inverse">
+<nav class="navbar navbar-static-top navbar-inverse hidden-xs">
   <div class="container-fluid">
     <div class="navbar-header">
       <a ui-sref="home" class="navbar-brand">
@@ -6,7 +6,7 @@
       </a>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+    <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li ng-class="vm.isState('tienda')"><a ui-sref="home">Tienda</a></li>
         <li ng-class="vm.isState('gestion')"><a ui-sref="products">Gestion de productos</a></li>
@@ -17,5 +17,32 @@
       </ul>
 
     </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-static-top navbar-inverse hidden-sm hidden-md hidden-lg">
+  <div class="container-fluid">
+    <div class="navbar-header click-mouse" ng-click="vm.collapsed = !vm.collapsed">
+      <a class="navbar-brand" ng-if="vm.isState('tienda') === 'active'">
+          Tienda de Pablo
+      </a>
+      <a class="navbar-brand" ng-if="vm.isState('gestion') === 'active'">
+          Gestión de productos
+      </a>
+      <a class="navbar-brand" ng-if="vm.isState('about') === 'active'">
+          Sobre Pablo
+      </a>
+      <a class="navbar-brand" ng-if="vm.isState('config') === 'active'">
+          Configuración
+      </a>
+    </div>
+    <ul class="nav navbar-nav" ng-show="vm.collapsed">
+      <li ng-class="vm.isState('tienda')"><a ui-sref="home">Tienda de Pablo</a></li>
+      <li ng-class="vm.isState('gestion')"><a ui-sref="products">Gestión de productos</a></li>
+      <li ng-class="vm.isState('about')"><a ui-sref="about">Sobre Pablo</a></li>
+      <li ng-class="vm.isState('config')"><a ui-sref="config">Configuración</a></li>
+    </ul>
+
+
   </div>
 </nav>

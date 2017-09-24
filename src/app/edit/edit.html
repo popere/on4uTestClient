@@ -24,14 +24,15 @@
         <input type="text" ng-model="edit.productModified.name" class="form-control"  />
       </p>
       <p class="form-group">
-        <label>Nuevo precio del producto</label>
+        <label>Nuevo precio del producto (€)</label>
         <input type="number" ng-model="edit.productModified.price" class="form-control"  />
       </p>
     </div>
-    <button type="button" class="col-xs-3 btn btn-info" ng-click="edit.returnToHome()">◀ VOLVER</button>
+    <div class="col-xs-12">
+      <button type="button" class="col-xs-3 btn btn-info" ng-click="edit.returnToHome()">◀ VOLVER</button>
 
-    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="edit.reset()">✖ BORRAR TODO</button>
-    <button type="button" class="col-xs-3 btn btn-primary" ng-click="edit.edit()">✔ GUARDAR MODIFICACIÓN</button>
-
+      <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="edit.reset()">✖ BORRAR TODO</button>
+      <button type="button" class="col-xs-3 btn btn-primary" ng-click="edit.edit()">✔ GUARDAR MODIFICACIÓN</button>
+    </div">
 
 </div>

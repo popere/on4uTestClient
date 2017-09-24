@@ -8,7 +8,8 @@
     Bienvenido al catálogo de la tienda de Pablo
   </h3>
 
-  <h5>Lista de productos en venta:</h5>
+  <h5 ng-if="home.products.length === 0">Actualmente no tenemos ningun producto en venta, clique en <a ui-sref="products">Gestion de productos</a> para añadir nuevos productos en venta</h5>
+  <h5 ng-if="home.products.length !== 0">Lista de productos en venta:</h5>
 
 
   <div class="row" ng-if="home.products.length !== 0">

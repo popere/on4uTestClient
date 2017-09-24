@@ -20,7 +20,7 @@
       timeInMs = new Date();
       timeInMs = timeInMs.setHours(timeInMs.getHours() - 24);
 
-      el = angular.element('<acme-navbar creation-date="' + timeInMs + '"></acme-navbar>');
+      el = angular.element('<navbar creation-date="' + timeInMs + '"></navbar>');
 
       $compile(el)($rootScope.$new());
       $rootScope.$digest();
@@ -42,9 +42,5 @@
       expect(vm.relativeDate).toEqual('a day ago');
     });
 
-    // it('should call Moment', function() {
-    //   console.log($window.moment)
-    //   expect($window.moment).toHaveBeenCalled();
-    // });
   });
 })();

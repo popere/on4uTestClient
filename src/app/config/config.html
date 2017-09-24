@@ -12,10 +12,12 @@
         <input type="text" ng-model="config.newUrlApi" class="form-control">
       </p>
     </div>
-    <button type="button" class="col-xs-3 btn btn-info" ng-click="config.returnToHome()">◀ VOLVER</button>
+    <div class="col-xs-12">
+      <button type="button" class="col-xs-3 btn btn-info" ng-click="config.returnToHome()">◀ VOLVER</button>
 
-    <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="config.reset()">✖ RESET</button>
-    <button type="button" class="col-xs-3 btn btn-primary" ng-click="config.save()">✚ GUARDAR</button>
+      <button type="button" class="col-xs-offset-3 col-xs-3 btn btn-secondary" ng-click="config.reset()">✖ RESET</button>
+      <button type="button" class="col-xs-3 btn btn-primary" ng-click="config.save()">✚ GUARDAR</button>
+    </div>
 
 
 </div>
