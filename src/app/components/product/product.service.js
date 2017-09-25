@@ -6,7 +6,7 @@
     .factory('productService', productService);
 
   /** @ngInject */
-  function productService($log, $http, ipApiByDefault) {
+  function productService($log, $http, ipApiByDefault, $q) {
     var apiTest = ipApiByDefault;
 
     var service = {
@@ -71,6 +71,7 @@
        * @returns {*}
        */
       function getListProductsComplete(response) {
+        $log.error("response", response);
         return angular.isUndefined(response.data) ? [] : response.data;
       }
 
@@ -79,7 +80,9 @@
        * @param error
        */
       function getListProductsFailed(error) {
-        $log.error('Request failed for getListProducts.\n' + angular.toJson(error.data, true));
+        $log.error('Request failed for getListProducts.\n' + angular.toJson(error, true));
+        return $q.reject(error);
+
       }
     }
 
@@ -113,6 +116,8 @@
        */
       function getProductFailed(error) {
         $log.error('Request failed for getProduct.\n' + angular.toJson(error.data, true));
+        return $q.reject(error);
+
       }
     }
 
@@ -124,10 +129,7 @@
      */
     function _createProduct(product) {
       if(product && product.price && product.sku && product.name){
-        return $http.post(apiTest + "/products",
-                          product,
-                          {headers: {'Content-Type': "application/json"}}
-                    )
+        return $http.post(apiTest + "/products", product)
                     .then(postProductComplete)
                     .catch(postProductFailed);
       } else {
@@ -149,6 +151,7 @@
        */
       function postProductFailed(error) {
         $log.error('Request failed for postProduct.\n' + angular.toJson(error.data, true));
+        return $q.reject(error);
       }
     }
 
@@ -182,6 +185,7 @@
        */
       function deleteProductFailed(error) {
         $log.error('Request failed for deleteProduct.\n' + angular.toJson(error.data, true));
+        return $q.reject(error);
       }
     }
 
@@ -193,17 +197,9 @@
      * @private
      */
     function _updateProduct(index, product) {
-      if(angular.isNumber(index) && product && product.price && product.sku && product.name){
-        return $http.delete(apiTest + "/products/" + index,
-                          product,
-                          {headers: {'Content-Type': "application/json"}}
-                    )
+        return $http.put(apiTest + "/products/" + index, product)
                     .then(updateProductComplete)
                     .catch(updateProductFailed);
-      } else {
-        return null;
-      }
-
       /**
        * Function to manage the success case of updating a product
        * @param response
@@ -219,6 +215,8 @@
        */
       function updateProductFailed(error) {
         $log.error('Request failed for updateProduct.\n' + angular.toJson(error.data, true));
+        return $q.reject(error);
+
       }
     }
 

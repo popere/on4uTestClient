@@ -26,7 +26,7 @@
       var productId = parseInt($stateParams.productId);
       productService.getProduct(productId).then(function(product){
           vm.productModified = product;
-          vm.productBefore = product;
+          vm.productBefore = angular.copy(product);
       }).catch(function(error){
         $log.error(error);
       });
@@ -36,9 +36,9 @@
      * Function to modify a product already existing
      */
     vm.edit = function() {
-      var nameIsValid = vm.product && vm.product.name;
-      var skuIsValid = vm.product && vm.product.sku;
-      var price = vm.product && vm.product.price;
+      var nameIsValid = vm.productModified && vm.productModified.name;
+      var skuIsValid = vm.productModified && vm.productModified.sku;
+      var price = vm.productModified && vm.productModified.price;
 
       var priceIsValid = price && price > 0;
       if(!priceIsValid){
@@ -55,7 +55,7 @@
         productService.updateProduct(index, vm.productModified).then(function(response){
           $log.info("Edit of product correct", response);
           tools.goToProducts();
-          toastr.success('Modificación del producto (SKU: ' + vm.product.sku +  ') con éxito.');
+          toastr.success('Modificación del producto (SKU: ' + vm.productModified.sku +  ') con éxito.');
         }).catch(function(error){
           $log.error(error);
           toastr.success('Error durante la modificación del producto (SKU: ' + vm.product.sku +  ').');

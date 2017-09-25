@@ -16,6 +16,7 @@
       category : "sku",
       direction : "+"
     };
+    vm.loadFailed = false;
 
     loadProducts();
 
@@ -47,11 +48,13 @@
      */
     function loadProducts() {
       productService.getListOfProducts().then(function(listProduct){
-          vm.products = listProduct;
+        vm.products = listProduct;
+        vm.loadFailed = false;
         toastr.success('Recuperación éxitosa de los productos.');
       }).catch(function(error){
         $log.error(error);
         toastr.error('Error en la recuperación de la lista de productos del servidor.');
+        vm.loadFailed = true;
       });
     }
 

@@ -1,7 +1,9 @@
-<button type="button" class="btn btn-success" ng-click="main.createProduct()">✚ AÑADIR NUEVO PRODUCTO</button>
+<button ng-if="!main.loadFailed" type="button" class="btn btn-success" ng-click="main.createProduct()">✚ AÑADIR NUEVO PRODUCTO</button>
 
-<h4 ng-if="main.products.length === 0">Por favor añada su primer producto mediante el botón AÑADIR NUEVO PRODUCTO:</h4>
 
+<h4 ng-if="!main.loadFailed && main.products.length === 0">Por favor añada su primer producto mediante el botón AÑADIR NUEVO PRODUCTO:</h4>
+
+<h3 ng-if="main.loadFailed">Hemos detectado <b style="color: red;">problemas de conexión al servidor</b>, para intentar arreglarlo clique en <a ui-sref="config">Configuración</a> para intentar arreglarlo cambiando la url del Backend</h3>
 <div class="row" ng-if="main.products.length !== 0">
   <div class="col-xs-12">
     <h3>Gestión de los productos en venta:</h3>

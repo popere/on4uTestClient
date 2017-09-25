@@ -5,9 +5,9 @@
   </h2>
 </div>
 
-<h3 ng-if="home.products.length === 0">Actualmente no tenemos ningún producto en venta, clique en <a ui-sref="products">Gestión de productos</a> para añadir nuevos artículos en venta</h3>
-<div class="col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8 ">
-  <h4 ng-if="home.products.length !== 0">Lista de productos en venta:</h4>
+<h3 ng-if="!home.loadFailed && home.products.length === 0">Actualmente no tenemos ningún producto en venta, clique en <a ui-sref="products">Gestión de productos</a> para añadir nuevos artículos en venta</h3>
+<h3 ng-if="home.loadFailed">Hemos detectado <b style="color: red;">problemas de conexión al servidor</b>, para intentar arreglarlo clique en <a ui-sref="config">Configuración</a> para intentar arreglarlo cambiando la url del Backend</h3>
+<h4 ng-if="home.products.length !== 0">Lista de productos en venta:</h4>
 </div>
 
 
