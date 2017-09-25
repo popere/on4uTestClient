@@ -81,6 +81,13 @@ $brand-info: #f69422 !default;
   display:flex;
 }
 
+.about-item {
+  margin: 0;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
